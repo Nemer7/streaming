@@ -70,8 +70,9 @@ public class PlanSuscripcion implements Cloneable {
         try {
             return (PlanSuscripcion) super.clone();
         } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-            return null;
+            throw new AssertionError("Error al clonar el objeto PlanSuscripcion", e);
         }
     }
+
+
 }
