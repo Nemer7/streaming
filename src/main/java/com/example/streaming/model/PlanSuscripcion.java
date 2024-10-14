@@ -25,6 +25,46 @@ public class PlanSuscripcion implements Cloneable {
                 "\nAlmacenamiento Extra: " + almacenamientoExtra + " GB");
     }
 
+    public String getCalidadVideo() {
+        return calidadVideo;
+    }
+
+    public void setCalidadVideo(String calidadVideo) {
+        this.calidadVideo = calidadVideo;
+    }
+
+    public int getDispositivosPermitidos() {
+        return dispositivosPermitidos;
+    }
+
+    public void setDispositivosPermitidos(int dispositivosPermitidos) {
+        this.dispositivosPermitidos = dispositivosPermitidos;
+    }
+
+    public boolean isIncluyeAnuncios() {
+        return incluyeAnuncios;
+    }
+
+    public void setIncluyeAnuncios(boolean incluyeAnuncios) {
+        this.incluyeAnuncios = incluyeAnuncios;
+    }
+
+    public boolean isContenidoExclusivo() {
+        return contenidoExclusivo;
+    }
+
+    public void setContenidoExclusivo(boolean contenidoExclusivo) {
+        this.contenidoExclusivo = contenidoExclusivo;
+    }
+
+    public int getAlmacenamientoExtra() {
+        return almacenamientoExtra;
+    }
+
+    public void setAlmacenamientoExtra(int almacenamientoExtra) {
+        this.almacenamientoExtra = almacenamientoExtra;
+    }
+
     @Override
     public PlanSuscripcion clone() {
         try {
