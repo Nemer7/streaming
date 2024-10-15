@@ -4,5 +4,5 @@ import com.example.streaming.model.PlanSuscripcion;
 
 public interface PlanSuscripcionFactory {
 
-    PlanSuscripcion crearPlan();
+    PlanSuscripcion crearPlan(String nombreUsuario);
 }

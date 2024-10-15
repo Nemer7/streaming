@@ -4,38 +4,57 @@ import com.example.streaming.model.PlanSuscripcion;
 
 public class PlanSuscripcionBuilder {
 
-        private String calidadVideo;
-        private int dispositivosPermitidos;
-        private boolean incluyeAnuncios;
-        private boolean contenidoExclusivo;
-        private int almacenamientoExtra;
+    private String tipoPlan;
+    private String nombreUsuario;
+    private String calidadVideo;
+    private int dispositivosPermitidos;
+    private boolean incluyeAnuncios;
+    private boolean contenidoExclusivo;
+    private int almacenamientoExtra;
 
-        public PlanSuscripcionBuilder setCalidadVideo(String calidad) {
-            this.calidadVideo = calidad;
-            return this;
-        }
+    public String getTipoPlan() {
+        return tipoPlan;
+    }
 
-        public PlanSuscripcionBuilder setDispositivosPermitidos(int num) {
-            this.dispositivosPermitidos = num;
-            return this;
-        }
+    public void setTipoPlan(String tipoPlan) {
+        this.tipoPlan = tipoPlan;
+    }
 
-        public PlanSuscripcionBuilder setIncluyeAnuncios(boolean incluye) {
-            this.incluyeAnuncios = incluye;
-            return this;
-        }
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
 
-        public PlanSuscripcionBuilder addContenidoExclusivo(boolean contenido) {
-            this.contenidoExclusivo = contenido;
-            return this;
-        }
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
+    }
 
-        public PlanSuscripcionBuilder addAlmacenamientoExtra(int cantidad) {
-            this.almacenamientoExtra = cantidad;
-            return this;
-        }
+    public PlanSuscripcionBuilder setCalidadVideo(String calidad) {
+        this.calidadVideo = calidad;
+        return this;
+    }
 
-        public PlanSuscripcion build() {
-            return new PlanSuscripcion(calidadVideo, dispositivosPermitidos, incluyeAnuncios, contenidoExclusivo, almacenamientoExtra);
-        }
+    public PlanSuscripcionBuilder setDispositivosPermitidos(int num) {
+        this.dispositivosPermitidos = num;
+        return this;
+    }
+
+    public PlanSuscripcionBuilder setIncluyeAnuncios(boolean incluye) {
+        this.incluyeAnuncios = incluye;
+        return this;
+    }
+
+    public PlanSuscripcionBuilder addContenidoExclusivo(boolean contenido) {
+        this.contenidoExclusivo = contenido;
+        return this;
+    }
+
+    public PlanSuscripcionBuilder addAlmacenamientoExtra(int cantidad) {
+        this.almacenamientoExtra = cantidad;
+        return this;
+    }
+
+    public PlanSuscripcion build() {
+        return new PlanSuscripcion(tipoPlan, nombreUsuario, calidadVideo, dispositivosPermitidos,
+                incluyeAnuncios, contenidoExclusivo, almacenamientoExtra);
+    }
 }

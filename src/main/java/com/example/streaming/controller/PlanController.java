@@ -6,6 +6,8 @@ import com.example.streaming.service.PlanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/planes")
 public class PlanController {
@@ -13,19 +15,23 @@ public class PlanController {
     @Autowired
     private PlanService planService;
 
-    @GetMapping("/basico")
-    public PlanSuscripcion crearPlanBasico() {
-        return planService.crearPlan(new PlanBasicoFactory());
+    @GetMapping("/consultaPlanes")
+    public List<PlanSuscripcion> obtenerTodosLosPlanes() {
+        return planService.obtenerPlanes();
+    }
+    @PostMapping("/basico")
+    public PlanSuscripcion crearPlanBasico(@RequestParam String nombreUsuario) {
+        return planService.crearPlan(new PlanBasicoFactory(), nombreUsuario);
     }
 
-    @GetMapping("/estandar")
-    public PlanSuscripcion crearPlanEstandar() {
-        return planService.crearPlan(new PlanEstandarFactory());
+    @PostMapping("/estandar")
+    public PlanSuscripcion crearPlanEstandar(@RequestParam String nombreUsuario) {
+        return planService.crearPlan(new PlanEstandarFactory(), nombreUsuario);
     }
 
-    @GetMapping("/premium")
-    public PlanSuscripcion crearPlanPremium() {
-        return planService.crearPlan(new PlanPremiumFactory());
+    @PostMapping("/premium")
+    public PlanSuscripcion crearPlanPremium(@RequestParam String nombreUsuario) {
+        return planService.crearPlan(new PlanPremiumFactory(), nombreUsuario);
     }
 
     @PostMapping("/personalizar")

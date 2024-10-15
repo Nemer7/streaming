@@ -4,10 +4,9 @@ import com.example.streaming.model.PlanSuscripcion;
 
 public class PlanBasicoFactory implements PlanSuscripcionFactory{
 
-
     @Override
-    public PlanSuscripcion crearPlan() {
-        return new PlanSuscripcion("SD", 1, true, false, 0);
+    public PlanSuscripcion crearPlan(String nombreUsuario) {
+        return new PlanSuscripcion("Basico",nombreUsuario,"SD", 1, true, false, 0);
     }
 
 }

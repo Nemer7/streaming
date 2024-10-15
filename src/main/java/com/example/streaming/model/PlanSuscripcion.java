@@ -1,14 +1,20 @@
 package com.example.streaming.model;
 
+import java.util.List;
+
 public class PlanSuscripcion implements Cloneable {
 
+    private String tipoPlan;
+    private String nombreUsuario;
     private String calidadVideo;
     private int dispositivosPermitidos;
     private boolean incluyeAnuncios;
     private boolean contenidoExclusivo;
     private int almacenamientoExtra;
 
-    public PlanSuscripcion(String calidadVideo, int dispositivosPermitidos, boolean incluyeAnuncios, boolean contenidoExclusivo, int almacenamientoExtra) {
+    public PlanSuscripcion(String tipoPlan, String nombreUsuario, String calidadVideo, int dispositivosPermitidos, boolean incluyeAnuncios, boolean contenidoExclusivo, int almacenamientoExtra) {
+        this.tipoPlan = tipoPlan;
+        this.nombreUsuario = nombreUsuario;
         this.calidadVideo = calidadVideo;
         this.dispositivosPermitidos = dispositivosPermitidos;
         this.incluyeAnuncios = incluyeAnuncios;
@@ -17,12 +23,29 @@ public class PlanSuscripcion implements Cloneable {
     }
 
     public void mostrarDetalles() {
-        System.out.println("Plan de suscripción: " +
+        System.out.println(
+                "Plan de suscripción: " +
+                "\nNombre del Usuario: " + nombreUsuario +
                 "\nCalidad Video: " + calidadVideo +
                 "\nDispositivos Permitidos: " + dispositivosPermitidos +
                 "\nIncluye Anuncios: " + incluyeAnuncios +
                 "\nContenido Exclusivo: " + contenidoExclusivo +
                 "\nAlmacenamiento Extra: " + almacenamientoExtra + " GB");
+    }
+
+    public String getTipoPlan() {
+        return tipoPlan;
+    }
+
+    public void setTipoPlan(String tipoPlan) {
+        this.tipoPlan = tipoPlan;
+    }
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
     }
 
     public String getCalidadVideo() {
