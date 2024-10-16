@@ -34,13 +34,25 @@ public class PlanController {
         return planService.crearPlan(new PlanPremiumFactory(), nombreUsuario);
     }
 
+    @PostMapping("/personalizado")
+    public PlanSuscripcion crearPlanPerzonaliado(@RequestParam String nombreUsuario,
+                                            @RequestParam String calidad,
+                                            @RequestParam int dispositivos,
+                                            @RequestParam boolean anuncios,
+                                            @RequestParam boolean contenidoExclusivo,
+                                            @RequestParam int almacenamientoExtra){
+        return planService.crearPlan(new PlanPersonalizadoFactory(), nombreUsuario,calidad,dispositivos,
+                anuncios,contenidoExclusivo,almacenamientoExtra);
+    }
+
     @PostMapping("/personalizar")
-    public PlanSuscripcion personalizarPlan(@RequestParam String calidad,
+    public PlanSuscripcion personalizarPlan(@RequestParam String nombreUsuario,
+                                            @RequestParam String calidad,
                                             @RequestParam int dispositivos,
                                             @RequestParam boolean anuncios,
                                             @RequestParam boolean contenidoExclusivo,
                                             @RequestParam int almacenamientoExtra) {
-        return planService.personalizarPlan(calidad, dispositivos, anuncios, contenidoExclusivo, almacenamientoExtra);
+        return planService.personalizarPlan(nombreUsuario, calidad, dispositivos, anuncios, contenidoExclusivo, almacenamientoExtra);
     }
 
     @PostMapping("/clonar")

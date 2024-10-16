@@ -1,9 +1,11 @@
 package com.example.streaming.factory;
 
 import com.example.streaming.model.PlanSuscripcion;
+import org.springframework.web.bind.annotation.RequestParam;
 
-public class PlanPremiumFactory implements PlanSuscripcionFactory{
-    private static final String TIPO_PLAN = "Premium";
+public class PlanPersonalizadoFactory implements PlanSuscripcionFactory {
+
+    private static final String TIPO_PLAN = "Personalizado";
     private static final String CALIDAD_VIDEO = "4K";
     private static final int DISPOSITIVOS_PERMITIDOS = 4;
     private static final Boolean INCLUYE_ANUNCIOS = Boolean.FALSE;
@@ -16,10 +18,9 @@ public class PlanPremiumFactory implements PlanSuscripcionFactory{
                 DISPOSITIVOS_PERMITIDOS, INCLUYE_ANUNCIOS, CONTENIDO_EXCLUSIVO, ALMACENAMIENTO_EXTRA,PRECIO_BASE);
     }
 
-    @Override
-    public PlanSuscripcion crearPlan(String nombreUsuario, String calidad, int dispositivos,
-                                     boolean anuncios, boolean contenidoExclusivo, int almacenamientoExtra, double precioPlan) {
-        return new PlanSuscripcion(TIPO_PLAN,nombreUsuario,calidad,
-                dispositivos, anuncios, contenidoExclusivo, almacenamientoExtra,PRECIO_BASE);
+    public PlanSuscripcion crearPlan(String nombreUsuario, String calidad, int dispositivos, boolean anuncios,
+                                     boolean contenidoExclusivo, int almacenamientoExtra, double precioPlan) {
+        return new PlanSuscripcion(TIPO_PLAN, nombreUsuario, calidad,
+                dispositivos, anuncios, contenidoExclusivo, almacenamientoExtra,precioPlan);
     }
 }

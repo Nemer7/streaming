@@ -11,8 +11,11 @@ public class PlanSuscripcion implements Cloneable {
     private boolean incluyeAnuncios;
     private boolean contenidoExclusivo;
     private int almacenamientoExtra;
+    private double precioPlan;
 
-    public PlanSuscripcion(String tipoPlan, String nombreUsuario, String calidadVideo, int dispositivosPermitidos, boolean incluyeAnuncios, boolean contenidoExclusivo, int almacenamientoExtra) {
+    public PlanSuscripcion(String tipoPlan, String nombreUsuario, String calidadVideo,
+                           int dispositivosPermitidos, boolean incluyeAnuncios, boolean contenidoExclusivo,
+                           int almacenamientoExtra, double precioPlan) {
         this.tipoPlan = tipoPlan;
         this.nombreUsuario = nombreUsuario;
         this.calidadVideo = calidadVideo;
@@ -20,6 +23,7 @@ public class PlanSuscripcion implements Cloneable {
         this.incluyeAnuncios = incluyeAnuncios;
         this.contenidoExclusivo = contenidoExclusivo;
         this.almacenamientoExtra = almacenamientoExtra;
+        this.precioPlan = precioPlan;
     }
 
     public void mostrarDetalles() {
@@ -98,4 +102,11 @@ public class PlanSuscripcion implements Cloneable {
     }
 
 
+    public double getPrecioPlan() {
+        return precioPlan;
+    }
+
+    public void setPrecioPlan(double precioPlan) {
+        this.precioPlan = precioPlan;
+    }
 }

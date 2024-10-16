@@ -11,23 +11,18 @@ public class PlanSuscripcionBuilder {
     private boolean incluyeAnuncios;
     private boolean contenidoExclusivo;
     private int almacenamientoExtra;
+    private double precioPlan;
 
-    public String getTipoPlan() {
-        return tipoPlan;
-    }
 
-    public void setTipoPlan(String tipoPlan) {
+    public PlanSuscripcionBuilder setTipoPlan(String tipoPlan) {
         this.tipoPlan = tipoPlan;
+        return this;
     }
 
-    public String getNombreUsuario() {
-        return nombreUsuario;
-    }
-
-    public void setNombreUsuario(String nombreUsuario) {
+    public PlanSuscripcionBuilder setNombreUsuario(String nombreUsuario) {
         this.nombreUsuario = nombreUsuario;
+        return this;
     }
-
     public PlanSuscripcionBuilder setCalidadVideo(String calidad) {
         this.calidadVideo = calidad;
         return this;
@@ -52,9 +47,13 @@ public class PlanSuscripcionBuilder {
         this.almacenamientoExtra = cantidad;
         return this;
     }
+    public PlanSuscripcionBuilder addPrecioPlan(double precioPlan) {
+        this.precioPlan = precioPlan;
+        return this;
+    }
 
     public PlanSuscripcion build() {
         return new PlanSuscripcion(tipoPlan, nombreUsuario, calidadVideo, dispositivosPermitidos,
-                incluyeAnuncios, contenidoExclusivo, almacenamientoExtra);
+                incluyeAnuncios, contenidoExclusivo, almacenamientoExtra,precioPlan);
     }
 }
