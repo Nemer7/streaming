@@ -8,9 +8,9 @@ public class PlanEstandarFactory implements PlanSuscripcionFactory {
     private static final String CALIDAD_VIDEO = "HD";
     private static final int DISPOSITIVOS_PERMITIDOS = 2;
     private static final Boolean INCLUYE_ANUNCIOS = Boolean.FALSE;
-    private static final Boolean CONTENIDO_EXCLUSIVO = Boolean.TRUE;
+    private static final Boolean CONTENIDO_EXCLUSIVO = Boolean.FALSE;
     private static final int ALMACENAMIENTO_EXTRA = 20;
-    private static final double PRECIO_BASE = 10;
+    private static final double PRECIO_BASE = 16;
     @Override
     public PlanSuscripcion crearPlan(String nombreUsuario) {
         return new PlanSuscripcion(TIPO_PLAN, nombreUsuario, CALIDAD_VIDEO,

@@ -5,7 +5,7 @@ import com.example.streaming.model.PlanSuscripcion;
 public class PlanBasicoFactory implements PlanSuscripcionFactory {
     private static final String TIPO_PLAN = "Basico";
     private static final String CALIDAD_VIDEO = "SD";
-    private static final int DISPOSITIVOS_PERMITIDOS = 2;
+    private static final int DISPOSITIVOS_PERMITIDOS = 1;
     private static final Boolean INCLUYE_ANUNCIOS = Boolean.TRUE;
     private static final Boolean CONTENIDO_EXCLUSIVO = Boolean.FALSE;
     private static final int ALMACENAMIENTO_EXTRA = 0;

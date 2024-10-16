@@ -19,6 +19,7 @@ public class PlanController {
     public List<PlanSuscripcion> obtenerTodosLosPlanes() {
         return planService.obtenerPlanes();
     }
+
     @PostMapping("/basico")
     public PlanSuscripcion crearPlanBasico(@RequestParam String nombreUsuario) {
         return planService.crearPlan(new PlanBasicoFactory(), nombreUsuario);
@@ -36,23 +37,34 @@ public class PlanController {
 
     @PostMapping("/personalizado")
     public PlanSuscripcion crearPlanPerzonaliado(@RequestParam String nombreUsuario,
-                                            @RequestParam String calidad,
-                                            @RequestParam int dispositivos,
-                                            @RequestParam boolean anuncios,
-                                            @RequestParam boolean contenidoExclusivo,
-                                            @RequestParam int almacenamientoExtra){
-        return planService.crearPlan(new PlanPersonalizadoFactory(), nombreUsuario,calidad,dispositivos,
-                anuncios,contenidoExclusivo,almacenamientoExtra);
+                                                 @RequestParam String calidad,
+                                                 @RequestParam int dispositivos,
+                                                 @RequestParam boolean anuncios,
+                                                 @RequestParam boolean contenidoExclusivo,
+                                                 @RequestParam int almacenamientoExtra) {
+        return planService.crearPlan(new PlanPersonalizadoFactory(), nombreUsuario, calidad, dispositivos,
+                anuncios, contenidoExclusivo, almacenamientoExtra);
     }
 
-    @PostMapping("/personalizar")
-    public PlanSuscripcion personalizarPlan(@RequestParam String nombreUsuario,
+    @PostMapping("/modificarPlan")
+    public PlanSuscripcion modificarPlan(@RequestParam String nombreUsuario,
                                             @RequestParam String calidad,
                                             @RequestParam int dispositivos,
                                             @RequestParam boolean anuncios,
                                             @RequestParam boolean contenidoExclusivo,
                                             @RequestParam int almacenamientoExtra) {
-        return planService.personalizarPlan(nombreUsuario, calidad, dispositivos, anuncios, contenidoExclusivo, almacenamientoExtra);
+        return planService.modificarPlan(nombreUsuario, calidad, dispositivos, anuncios,
+                contenidoExclusivo, almacenamientoExtra);
+    }
+
+    @GetMapping("/consultaPrecioPlan")
+    public double consultarPrecioPlan(@RequestParam String calidad,
+                                      @RequestParam int dispositivos,
+                                      @RequestParam boolean anuncios,
+                                      @RequestParam boolean contenidoExclusivo,
+                                      @RequestParam int almacenamientoExtra) {
+        return planService.consultarPrecioPlan(calidad, dispositivos, anuncios,
+                contenidoExclusivo, almacenamientoExtra);
     }
 
     @PostMapping("/clonar")

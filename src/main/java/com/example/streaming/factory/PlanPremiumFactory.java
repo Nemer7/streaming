@@ -9,7 +9,7 @@ public class PlanPremiumFactory implements PlanSuscripcionFactory{
     private static final Boolean INCLUYE_ANUNCIOS = Boolean.FALSE;
     private static final Boolean CONTENIDO_EXCLUSIVO = Boolean.TRUE;
     private static final int ALMACENAMIENTO_EXTRA = 50;
-    private static final double PRECIO_BASE = 15;
+    private static final double PRECIO_BASE = 21;
     @Override
     public PlanSuscripcion crearPlan(String nombreUsuario) {
         return new PlanSuscripcion(TIPO_PLAN,nombreUsuario,CALIDAD_VIDEO,

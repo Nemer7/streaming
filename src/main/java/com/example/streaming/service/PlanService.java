@@ -39,20 +39,9 @@ public class PlanService {
         return planesSuscripcion;
     }
 
-    public PlanSuscripcion personalizarPlan(String calidad, int dispositivos, boolean anuncios, boolean contenidoExclusivo, int almacenamientoExtra) {
-        return new PlanSuscripcionBuilder()
-                .setCalidadVideo(calidad)
-                .setDispositivosPermitidos(dispositivos)
-                .setIncluyeAnuncios(anuncios)
-                .addContenidoExclusivo(contenidoExclusivo)
-                .addAlmacenamientoExtra(almacenamientoExtra)
-                .build();
-    }
 
-
-    public PlanSuscripcion personalizarPlan(String nombreUsuario, String calidad, int dispositivos,
+    public PlanSuscripcion modificarPlan(String nombreUsuario, String calidad, int dispositivos,
                                             boolean anuncios, boolean contenidoExclusivo, int almacenamientoExtra) {
-
 
         for (PlanSuscripcion plan : planesSuscripcion) {
             if (plan.getNombreUsuario().equals(nombreUsuario)) {
@@ -65,13 +54,26 @@ public class PlanService {
                         .addContenidoExclusivo(contenidoExclusivo)
                         .addAlmacenamientoExtra(almacenamientoExtra)
                         .build();
+                planPersonalizado.setPrecioPlan(calcularPrecio(planPersonalizado));
                 int index = planesSuscripcion.indexOf(plan);
                 planesSuscripcion.set(index, planPersonalizado);
-
                 return planPersonalizado;
             }
         }
         throw new IllegalArgumentException("No se encontró el plan para el usuario: " + nombreUsuario);
+    }
+
+    public double consultarPrecioPlan(String calidad, int dispositivos,
+                                         boolean anuncios, boolean contenidoExclusivo, int almacenamientoExtra) {
+        PlanSuscripcion planPersonalizado = new PlanSuscripcionBuilder()
+                .setCalidadVideo(calidad)
+                .setDispositivosPermitidos(dispositivos)
+                .setIncluyeAnuncios(anuncios)
+                .addContenidoExclusivo(contenidoExclusivo)
+                .addAlmacenamientoExtra(almacenamientoExtra)
+                .build();
+        planPersonalizado.setPrecioPlan(calcularPrecio(planPersonalizado));
+        return planPersonalizado.getPrecioPlan();
     }
 
     public PlanSuscripcion clonarSuscripcion(PlanSuscripcion plan) {
