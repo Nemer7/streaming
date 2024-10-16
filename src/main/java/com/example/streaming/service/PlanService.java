@@ -4,6 +4,7 @@ import com.example.streaming.builder.PlanSuscripcionBuilder;
 import com.example.streaming.factory.PlanSuscripcionFactory;
 import com.example.streaming.model.PlanSuscripcion;
 import com.example.streaming.prototype.SuscripcionClonador;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -23,11 +24,11 @@ public class PlanService {
     }
 
     public PlanSuscripcion crearPlan(PlanSuscripcionFactory factory, String nombreUsuario,
-                                      String calidad,
-                                      int dispositivos,
-                                      boolean anuncios,
-                                      boolean contenidoExclusivo,
-                                      int almacenamientoExtra) {
+                                     String calidad,
+                                     int dispositivos,
+                                     boolean anuncios,
+                                     boolean contenidoExclusivo,
+                                     int almacenamientoExtra) {
         PlanSuscripcion nuevoPlan = factory.crearPlan(nombreUsuario,calidad,dispositivos,anuncios,
                 contenidoExclusivo,almacenamientoExtra,0);
         nuevoPlan.setPrecioPlan(calcularPrecio(nuevoPlan));
@@ -76,8 +77,19 @@ public class PlanService {
         return planPersonalizado.getPrecioPlan();
     }
 
-    public PlanSuscripcion clonarSuscripcion(PlanSuscripcion plan) {
-        return suscripcionClonador.clonarSuscripcion(plan);
+    public PlanSuscripcion clonarSuscripcion(String nombreUsuarioReferencia,String nombreUsuarioNuevo) {
+
+        for (PlanSuscripcion plan : planesSuscripcion) {
+            if (plan.getNombreUsuario().equals(nombreUsuarioReferencia)) {
+                PlanSuscripcion planPersonalizado = suscripcionClonador.clonarSuscripcion(plan);
+
+                planPersonalizado.setNombreUsuario(nombreUsuarioNuevo);
+
+                planesSuscripcion.add(planPersonalizado);
+                return planPersonalizado;
+            }
+        }
+        throw new IllegalArgumentException("No se encontró el plan para el usuario: " + nombreUsuarioReferencia);
     }
 
     private double calcularPrecio(PlanSuscripcion plan) {

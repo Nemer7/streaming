@@ -68,7 +68,8 @@ public class PlanController {
     }
 
     @PostMapping("/clonar")
-    public PlanSuscripcion clonarPlan(@RequestBody PlanSuscripcion plan) {
-        return planService.clonarSuscripcion(plan);
+    public PlanSuscripcion clonarPlan(@RequestParam String nombreUsuarioReferencia,
+                                      @RequestParam String nombreUsuarioNuevo) {
+        return planService.clonarSuscripcion(nombreUsuarioReferencia, nombreUsuarioNuevo);
     }
 }
